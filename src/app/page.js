@@ -367,19 +367,40 @@ export default function Home() {
     setTimeout(() => { setResult(pick(v)); setAnimating(false); setDrawnCards(doTarot(1)) }, 800)
   }
 
-  const askAI = async () => {
+  const localReading = (options, cards) => {
+    const positions = ['过去', '现在', '未来']
+    const lines = cards.map((c, i) => {
+      const pos = positions[i] || '位置' + (i+1)
+      const dir = c.upright ? '正位' : '逆位'
+      const meaning = c.upright ? (c.meaningUp || '未知') : (c.meaningDown || '未知')
+      return `**${pos}** — ${c.name}（${dir}）\n> ${meaning}`
+    }).join('\n\n')
+    const opts = options.join('、')
+    const pick = options[Math.floor(Math.random() * options.length)]
+    const reject = options.find(o => o !== pick)
+
+    return `🔮 **占卜解读**
+命运之轮已将你带到这一刻。${cards[0]?.name || '命运'}的能量笼罩着「${opts}」之间的抉择。
+
+🃏 **牌面分析**
+${lines}
+
+💡 **命运建议**
+✦ 静下心来，倾听第一直觉——你的潜意识已经知道答案。
+✦ 不要被短期波动迷惑，看长远趋势才是关键。
+✦ 可以找人聊聊，但最终决定权在你手中。
+
+🏆 **我的推荐**
+综合牌面来看，我更倾向于推荐 **「${pick}」**。${reject ? `虽然「${reject}」也有它的道理，但${cards[0]?.upright ? '正位' : '逆位'}的「${cards[0]?.name}」暗示选择「${pick}」会让你走得更远。` : ''}
+
+*（以上为 AI 辅助占卜，仅供参考。命运最终掌握在你自己手中 🌙）*`
+  }
+
+  const askAI = () => {
     const v = options.filter(o => o.trim())
     if (v.length < 2) { alert('请先输入至少2个选项'); return }
-    setAiLoading(true); setAiResult(null)
     const c = doTarot(3); setDrawnCards(c); setDeckMode(true)
-    try {
-      const r = await fetch('/api/tarot-ai', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ options: v, cards: c, question: '请帮我做个决定' }),
-      })
-      setAiResult(await r.json())
-    } catch { setAiResult({ reading: '网络不通，请稍后再试 🙏' }) }
-    setAiLoading(false)
+    setAiResult({ reading: localReading(v, c) })
   }
 
   const handleMood = (m) => {
@@ -537,10 +558,10 @@ export default function Home() {
                   <p className="text-[6px] italic opacity-20" style={{ color: '#c4a050' }}>AI + 塔罗，给出专属指引</p>
                 </div>
               </div>
-              <button onClick={askAI} disabled={aiLoading}
-                className="w-full py-1.5 rounded-lg text-[9px] font-medium cursor-pointer tracking-[1px] font-serif transition-all active:scale-[0.95] disabled:opacity-30"
+              <button onClick={askAI}
+                className="w-full py-1.5 rounded-lg text-[9px] font-medium cursor-pointer tracking-[1px] font-serif transition-all active:scale-[0.95]"
                 style={{ background: 'linear-gradient(180deg, rgba(212,168,84,0.03), rgba(200,100,50,0.01))', border: '1px solid rgba(212,168,84,0.03)', color: 'rgba(212,168,84,0.3)' }}>
-                {aiLoading ? '🔮 占卜中…' : '✦ 免费试一次 ✦'}
+                ✦ 免费占卜一次 ✦
               </button>
             </div>
 
