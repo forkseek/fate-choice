@@ -98,32 +98,41 @@ function TarotCard3D({ card, upright, compact, delay }) {
         }}>
         {/* ======== CARD BACK ======== */}
         <div className={`absolute inset-0 backface-hidden ornate-back-${sz}`}>
-          {/* outer ornament layer */}
           <div className={`absolute inset-0 rounded-xl overflow-hidden`}
-            style={{ background: 'radial-gradient(ellipse at 50% 40%, #2a1508 0%, #0d0502 60%, #040201 100%)' }}>
-            {/* main back image */}
+            style={{ background: 'transparent' }}>
+            {/* main back SVG – rich visible texture */}
             <img src="/tarot/card-back.svg" alt="card back"
-              className="w-full h-full object-cover"
-              style={{ imageRendering: 'pixelated' }} />
+              className="w-full h-full object-cover" />
             {/* ornate outer border glow */}
-            <div className={`absolute inset-0 rounded-xl`}
+            <div className={`absolute inset-0 rounded-xl pointer-events-none`}
               style={{
-                border: `4px solid rgba(196,160,80,${compact ? '0.25' : '0.35'})`,
-                boxShadow: 'inset 0 0 30px rgba(255,215,0,0.05), 0 0 20px rgba(0,0,0,0.4)',
+                border: `4px solid rgba(196,160,80,${compact ? '0.3' : '0.4'})`,
+                boxShadow: 'inset 0 0 40px rgba(255,215,0,0.06), 0 0 25px rgba(0,0,0,0.5)',
               }} />
-            {/* inner border */}
+            {/* inner gold line */}
+            <div className={`absolute ${compact ? 'inset-[7px]' : 'inset-[9px]'} rounded-lg pointer-events-none`}
+              style={{ border: '1px solid rgba(196,160,80,0.15)' }} />
 
             {/* corner ornaments */}
             {['top-0 left-0', 'top-0 right-0', 'bottom-0 left-0', 'bottom-0 right-0'].map((pos, i) => (
-              <div key={i} className={`absolute ${pos} ${compact ? 'w-5 h-5' : 'w-7 h-7'} pointer-events-none`}>
-                <div className={`absolute ${i===0||i===2 ? 'left-0' : 'right-0'} ${i<2 ? 'top-0' : 'bottom-0'} ${compact ? 'w-3 h-3' : 'w-4 h-4'}`}
+              <div key={i} className={`absolute ${pos} ${compact ? 'w-7 h-7' : 'w-9 h-9'} pointer-events-none`} style={{ zIndex: 2 }}>
+                <div className={`absolute ${i===0||i===2 ? 'left-0' : 'right-0'} ${i<2 ? 'top-0' : 'bottom-0'} ${compact ? 'w-[14px] h-[14px]' : 'w-[18px] h-[18px]'}`}>
+                  <div className="w-full h-full"
+                    style={{
+                      borderColor: 'rgba(196,160,80,0.35)',
+                      borderStyle: 'solid',
+                      borderWidth: i===0 ? '2px 0 0 2px' : i===1 ? '2px 2px 0 0' : i===2 ? '0 0 2px 2px' : '0 2px 2px 0',
+                    }} />
+                  <div className={`absolute ${i===0||i===2 ? 'left-[3px]' : 'right-[3px]'} ${i<2 ? 'top-[3px]' : 'bottom-[3px]'} ${compact ? 'w-[4px] h-[4px]' : 'w-[5px] h-[5px]'}`}
+                    style={{ background: 'rgba(196,160,80,0.2)', borderRadius: '50%' }} />
+                </div>
+                {/* corner fleur */}
+                <div className={`absolute ${i===0||i===2 ? 'left-[5px]' : 'right-[5px]'} ${i<2 ? 'top-[5px]' : 'bottom-[5px]'} ${compact ? 'w-[7px] h-[10px]' : 'w-[9px] h-[13px]'}`}
                   style={{
-                    borderColor: 'rgba(196,160,80,0.3)',
-                    borderStyle: 'solid',
-                    borderWidth: i===0 ? '2px 0 0 2px' : i===1 ? '2px 2px 0 0' : i===2 ? '0 0 2px 2px' : '0 2px 2px 0',
+                    background: 'rgba(196,160,80,0.08)',
+                    clipPath: 'polygon(50% 0%, 100% 40%, 80% 50%, 100% 100%, 50% 75%, 0% 100%, 20% 50%, 0% 40%)',
+                    transform: i===1 ? 'scaleX(-1)' : i===3 ? 'scale(-1)' : i===2 ? 'scaleX(-1)' : '',
                   }} />
-                <div className={`absolute ${i===0||i===2 ? 'left-1' : 'right-1'} ${i<2 ? 'top-1' : 'bottom-1'} ${compact ? 'w-1 h-1' : 'w-1.5 h-1.5'}`}
-                  style={{ background: 'rgba(196,160,80,0.15)', borderRadius: '50%' }} />
               </div>
             ))}
           </div>
@@ -217,7 +226,6 @@ function TarotCard3D({ card, upright, compact, delay }) {
                 maxHeight: `calc(100% - ${compact ? 16 : 20}px)`,
                 top: '50%', left: '50%',
                 transform: `translate(-50%, -50%) ${!upright ? 'scaleY(-1)' : ''}`,
-                imageRendering: 'pixelated',
               }} />
 
             {/* ornate label banner */}

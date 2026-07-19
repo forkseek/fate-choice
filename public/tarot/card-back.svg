@@ -1,27 +1,141 @@
 <?xml version="1.0"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 420">
   <defs>
-    <radialGradient id="bg" cx="50%" cy="50%" r="55%">
-      <stop offset="0%" stop-color="#2a1508"/>
-      <stop offset="60%" stop-color="#0d0502"/>
-      <stop offset="100%" stop-color="#040201"/>
+    <!-- rich crimson gradient background -->
+    <radialGradient id="bg" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#3a1a0a"/>
+      <stop offset="35%" stop-color="#2a1006"/>
+      <stop offset="70%" stop-color="#140702"/>
+      <stop offset="100%" stop-color="#080301"/>
     </radialGradient>
-    <pattern id="damask" width="30" height="30" patternUnits="userSpaceOnUse">
-      <path d="M15 0 Q22 7 15 15 Q8 7 15 0Z" fill="none" stroke="#ffd700" stroke-width="0.8" opacity="0.2"/>
-      <path d="M0 15 Q7 22 15 15 Q22 22 30 15" fill="none" stroke="#ffd700" stroke-width="0.8" opacity="0.2"/>
-      <circle cx="15" cy="15" r="2" fill="none" stroke="#ffd700" stroke-width="0.4" opacity="0.15"/>
+
+    <!-- ornate damask pattern – more visible -->
+    <pattern id="damask" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M18 2 C22 6 28 6 30 10 C32 14 28 18 24 18 C20 18 18 14 18 18 C18 14 16 18 12 18 C8 18 4 14 6 10 C8 6 14 6 18 2Z" fill="none" stroke="#c4a050" stroke-width="0.6" opacity="0.25"/>
+      <circle cx="18" cy="18" r="1.5" fill="#c4a050" opacity="0.12"/>
+      <path d="M4 10 L10 4" stroke="#c4a050" stroke-width="0.4" opacity="0.15"/>
+      <path d="M32 10 L26 4" stroke="#c4a050" stroke-width="0.4" opacity="0.15"/>
+      <path d="M4 26 L10 32" stroke="#c4a050" stroke-width="0.4" opacity="0.15"/>
+      <path d="M32 26 L26 32" stroke="#c4a050" stroke-width="0.4" opacity="0.15"/>
     </pattern>
+
+    <!-- filigree corner pattern -->
+    <pattern id="cornerPat" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M0 0 L20 0 L20 3 L3 3 L3 20 L0 20Z" fill="#c4a050" opacity="0.06"/>
+    </pattern>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
   </defs>
-  <rect x="2" y="2" width="276" height="416" rx="8" fill="url(#bg)" stroke="#c4a050" stroke-width="2.5"/>
-  <rect x="6" y="6" width="268" height="408" rx="6" fill="none" stroke="#ffd700" stroke-width="0.6" opacity="0.25"/>
-  <rect x="2" y="2" width="276" height="416" rx="8" fill="url(#damask)"/>
-  <rect x="12" y="12" width="256" height="396" rx="5" fill="none" stroke="#c4a050" stroke-width="0.8" opacity="0.15"/>
-  <g transform="translate(140,210)" opacity="0.25">
-    <path d="M0 -45 L10 -12 L45 -12 L15 5 L25 38 L0 16 L-25 38 L-15 5 L-45 -12 L-10 -12 Z" fill="#ffd700"/>
-    <circle cx="0" cy="0" r="28" fill="none" stroke="#ffd700" stroke-width="1.5"/>
-    <circle cx="0" cy="0" r="20" fill="none" stroke="#ffd700" stroke-width="0.6" opacity="0.6"/>
-    <text x="0" y="5" text-anchor="middle" font-size="18" fill="#ffd700" font-family="serif">&#9733;</text>
-    <text x="0" y="-35" text-anchor="middle" font-size="7" fill="#ffd700" font-family="serif" letter-spacing="4">FATE</text>
-    <text x="0" y="48" text-anchor="middle" font-size="5" fill="#ffd700" font-family="serif" letter-spacing="3">T A R O T</text>
+
+  <!-- outermost dark border -->
+  <rect x="2" y="2" width="276" height="416" rx="10" fill="url(#bg)" stroke="#8b6914" stroke-width="3"/>
+
+  <!-- ornate outer gold frame (double border) -->
+  <rect x="5" y="5" width="270" height="410" rx="8" fill="none" stroke="#c4a050" stroke-width="1.5" opacity="0.35"/>
+  <rect x="8" y="8" width="264" height="404" rx="7" fill="none" stroke="#8b6914" stroke-width="0.8" opacity="0.2"/>
+
+  <!-- main damask pattern fill -->
+  <rect x="10" y="10" width="260" height="400" rx="6" fill="url(#damask)"/>
+
+  <!-- corner ornaments -->
+  <rect x="10" y="10" width="50" height="50" rx="0" fill="url(#cornerPat)"/>
+  <rect x="220" y="10" width="50" height="50" rx="0" fill="url(#cornerPat)"/>
+  <rect x="10" y="360" width="50" height="50" rx="0" fill="url(#cornerPat)"/>
+  <rect x="220" y="360" width="50" height="50" rx="0" fill="url(#cornerPat)"/>
+
+  <!-- inner frame border -->
+  <rect x="14" y="14" width="252" height="392" rx="5" fill="none" stroke="#c4a050" stroke-width="0.6" opacity="0.2"/>
+
+  <!-- top decoration band -->
+  <g opacity="0.15">
+    <rect x="35" y="22" width="210" height="1" fill="#ffd700"/>
+    <rect x="50" y="25" width="180" height="1" fill="#ffd700"/>
+    <!-- small diamonds in top band -->
+    <path d="M125 28 L128 32 L125 36 L122 32Z" fill="#c4a050" opacity="0.3"/>
+    <path d="M135 28 L138 32 L135 36 L132 32Z" fill="#c4a050" opacity="0.2"/>
+    <path d="M145 28 L148 32 L145 36 L142 32Z" fill="#c4a050" opacity="0.3"/>
+  </g>
+
+  <!-- bottom decoration band -->
+  <g opacity="0.15">
+    <rect x="35" y="395" width="210" height="1" fill="#ffd700"/>
+    <rect x="50" y="392" width="180" height="1" fill="#ffd700"/>
+    <path d="M125 389 L128 385 L125 381 L122 385Z" fill="#c4a050" opacity="0.3"/>
+    <path d="M135 389 L138 385 L135 381 L132 385Z" fill="#c4a050" opacity="0.2"/>
+    <path d="M145 389 L148 385 L145 381 L142 385Z" fill="#c4a050" opacity="0.3"/>
+  </g>
+
+  <!-- left side vine -->
+  <g opacity="0.08">
+    <path d="M17 50 Q15 60 18 70 Q21 80 17 90 Q13 100 18 110 Q23 120 17 130" fill="none" stroke="#ffd700" stroke-width="1.2"/>
+    <path d="M17 130 Q13 140 18 150 Q23 160 17 170 Q13 180 18 190 Q23 200 17 210" fill="none" stroke="#ffd700" stroke-width="1.2"/>
+    <circle cx="18" cy="70" r="2" fill="#ffd700"/>
+    <circle cx="17" cy="110" r="2" fill="#ffd700"/>
+    <circle cx="18" cy="150" r="2" fill="#ffd700"/>
+    <circle cx="17" cy="190" r="2" fill="#ffd700"/>
+  </g>
+
+  <!-- right side vine -->
+  <g opacity="0.08">
+    <path d="M263 50 Q265 60 262 70 Q259 80 263 90 Q267 100 262 110 Q257 120 263 130" fill="none" stroke="#ffd700" stroke-width="1.2"/>
+    <path d="M263 130 Q267 140 262 150 Q257 160 263 170 Q267 180 262 190 Q257 200 263 210" fill="none" stroke="#ffd700" stroke-width="1.2"/>
+    <circle cx="262" cy="70" r="2" fill="#ffd700"/>
+    <circle cx="263" cy="110" r="2" fill="#ffd700"/>
+    <circle cx="262" cy="150" r="2" fill="#ffd700"/>
+    <circle cx="263" cy="190" r="2" fill="#ffd700"/>
+  </g>
+
+  <!-- central ornate star / cross motif -->
+  <g transform="translate(140,210)" filter="url(#glow)">
+    <!-- outer ring -->
+    <circle cx="0" cy="0" r="34" fill="none" stroke="#c4a050" stroke-width="1.8" opacity="0.35"/>
+    <circle cx="0" cy="0" r="28" fill="none" stroke="#8b6914" stroke-width="1" opacity="0.2"/>
+
+    <!-- eight-pointed star -->
+    <path d="M0 -20 L4 -6 L18 -6 L7 3 L11 18 L0 9 L-11 18 L-7 3 L-18 -6 L-4 -6 Z" fill="#c4a050" opacity="0.3" stroke="#ffd700" stroke-width="0.5" opacity="0.4"/>
+    <path d="M0 -14 L3 -4 L13 -4 L5 2 L8 13 L0 6 L-8 13 L-5 2 L-13 -4 L-3 -4 Z" fill="#ffd700" opacity="0.15"/>
+
+    <!-- center star -->
+    <circle cx="0" cy="0" r="8" fill="none" stroke="#ffd700" stroke-width="1" opacity="0.3"/>
+    <circle cx="0" cy="0" r="4" fill="#ffd700" opacity="0.1"/>
+
+    <!-- fleur-de-lis arms (N, E, S, W) -->
+    <g opacity="0.25">
+      <!-- top -->
+      <path d="M0 -22 C-6 -30 6 -30 0 -22" fill="none" stroke="#c4a050" stroke-width="1.2"/>
+      <circle cx="0" cy="-28" r="2.5" fill="#c4a050"/>
+      <!-- bottom -->
+      <path d="M0 22 C-6 30 6 30 0 22" fill="none" stroke="#c4a050" stroke-width="1.2"/>
+      <circle cx="0" cy="28" r="2.5" fill="#c4a050"/>
+      <!-- left -->
+      <path d="M-22 0 C-30 -6 -30 6 -22 0" fill="none" stroke="#c4a050" stroke-width="1.2"/>
+      <circle cx="-28" cy="0" r="2.5" fill="#c4a050"/>
+      <!-- right -->
+      <path d="M22 0 C30 -6 30 6 22 0" fill="none" stroke="#c4a050" stroke-width="1.2"/>
+      <circle cx="28" cy="0" r="2.5" fill="#c4a050"/>
+    </g>
+
+    <!-- FATE text -->
+    <text x="0" y="-42" text-anchor="middle" font-size="8" fill="#c4a050" font-family="Georgia, serif" letter-spacing="5" opacity="0.5">FATE</text>
+    <text x="0" y="52" text-anchor="middle" font-size="5.5" fill="#8b6914" font-family="Georgia, serif" letter-spacing="4" opacity="0.35">T A R O T</text>
+  </g>
+
+  <!-- corner fleur-de-lis accents -->
+  <g opacity="0.2">
+    <!-- top-left -->
+    <path d="M25 38 C20 32 30 32 25 38" fill="none" stroke="#c4a050" stroke-width="1"/>
+    <circle cx="25" cy="35" r="1.5" fill="#c4a050"/>
+    <!-- top-right -->
+    <path d="M255 38 C250 32 260 32 255 38" fill="none" stroke="#c4a050" stroke-width="1"/>
+    <circle cx="255" cy="35" r="1.5" fill="#c4a050"/>
+    <!-- bottom-left -->
+    <path d="M25 382 C20 388 30 388 25 382" fill="none" stroke="#c4a050" stroke-width="1"/>
+    <circle cx="25" cy="385" r="1.5" fill="#c4a050"/>
+    <!-- bottom-right -->
+    <path d="M255 382 C250 388 260 388 255 382" fill="none" stroke="#c4a050" stroke-width="1"/>
+    <circle cx="255" cy="385" r="1.5" fill="#c4a050"/>
   </g>
 </svg>
