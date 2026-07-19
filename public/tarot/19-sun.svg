@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 420">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5e6c8"/>
+      <stop offset="50%" stop-color="#e8d4a8"/>
+      <stop offset="100%" stop-color="#dcc89c"/>
+    </linearGradient>
+    <linearGradient id="arch" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6b4f10"/>
+      <stop offset="100%" stop-color="#8b6914"/>
+    </linearGradient>
+  </defs>
+  <!-- 主边框 -->
+  <rect x="2" y="2" width="276" height="416" rx="8" fill="url(#bg)" stroke="#6b4f10" stroke-width="2.5"/>
+  <rect x="6" y="6" width="268" height="408" rx="6" fill="none" stroke="#8b6914" stroke-width="0.8" opacity="0.2"/>
+  
+  <!-- 哥特式拱门内框 -->
+  <path d="M14 380 L14 100 Q140 20 266 100 L266 380 Z" fill="none" stroke="#8b6914" stroke-width="1.2" opacity="0.15"/>
+  <path d="M18 376 L18 105 Q140 28 262 105 L262 376 Z" fill="none" stroke="#6b4f10" stroke-width="0.5" opacity="0.08"/>
+
+  <!-- 四角哥特装饰 -->
+  <g opacity="0.15">
+    <path d="M10 10 L25 10 L10 25 Z" fill="#8b6914"/>
+    <path d="M270 10 L255 10 L270 25 Z" fill="#8b6914"/>
+    <path d="M10 410 L25 410 L10 395 Z" fill="#8b6914"/>
+    <path d="M270 410 L255 410 L270 395 Z" fill="#8b6914"/>
+  </g>
+
+  <!-- 编号 - 左上 中世纪风格 -->
+  <text x="22" y="390" font-size="11" font-family="serif" fill="#2c1810" font-weight="bold" opacity="0.7" letter-spacing="2">XIX</text>
+  <!-- 编号 - 右下 -->
+  <text x="258" y="390" text-anchor="end" font-size="11" font-family="serif" fill="#2c1810" font-weight="bold" opacity="0.7" letter-spacing="2">XIX</text>
+
+  <!-- 中世纪插画区域 -->
+  <g transform="translate(140,185)">
+    <!-- 通用中世纪风格 -->
+      <rect x="-55" y="-80" width="110" height="140" rx="8" fill="#2c1810" opacity="0.02"/>
+      <rect x="-45" y="-70" width="90" height="120" rx="6" fill="none" stroke="#8b6914" stroke-width="0.5" opacity="0.06"/>
+      <circle cx="0" cy="0" r="35" fill="none" stroke="#8b6914" stroke-width="0.6" opacity="0.06"/>
+      <text x="0" y="5" text-anchor="middle" font-size="36" opacity="0.2">☀️</text>
+  </g>
+
+  <!-- 名称 - 中世纪字体风格 -->
+  <text x="140" y="370" text-anchor="middle" font-size="10" font-family="serif" fill="#2c1810" font-weight="bold" letter-spacing="3">LE SOLEIL</text>
+  <text x="140" y="385" text-anchor="middle" font-size="7" font-family="serif" fill="#8b6914" letter-spacing="2">The Sun</text>
+  <text x="140" y="400" text-anchor="middle" font-size="6" font-family="serif" fill="#6b4f10" opacity="0.5" font-style="italic" letter-spacing="1">XIX — Joie</text>
+  
+  <!-- 底部 -->
+  <text x="140" y="413" text-anchor="middle" font-size="4.5" font-family="serif" fill="#8b6914" opacity="0.12" letter-spacing="1">XIX • La Lumière • Succès</text>
+</svg>

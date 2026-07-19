@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 420">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#2a1508"/>
+      <stop offset="60%" stop-color="#0d0502"/>
+      <stop offset="100%" stop-color="#040201"/>
+    </radialGradient>
+    <pattern id="damask" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M15 0 Q22 7 15 15 Q8 7 15 0Z" fill="none" stroke="#ffd700" stroke-width="0.8" opacity="0.2"/>
+      <path d="M0 15 Q7 22 15 15 Q22 22 30 15" fill="none" stroke="#ffd700" stroke-width="0.8" opacity="0.2"/>
+      <circle cx="15" cy="15" r="2" fill="none" stroke="#ffd700" stroke-width="0.4" opacity="0.15"/>
+    </pattern>
+  </defs>
+  <rect x="2" y="2" width="276" height="416" rx="8" fill="url(#bg)" stroke="#c4a050" stroke-width="2.5"/>
+  <rect x="6" y="6" width="268" height="408" rx="6" fill="none" stroke="#ffd700" stroke-width="0.6" opacity="0.25"/>
+  <rect x="2" y="2" width="276" height="416" rx="8" fill="url(#damask)"/>
+  <rect x="12" y="12" width="256" height="396" rx="5" fill="none" stroke="#c4a050" stroke-width="0.8" opacity="0.15"/>
+  <g transform="translate(140,210)" opacity="0.25">
+    <path d="M0 -45 L10 -12 L45 -12 L15 5 L25 38 L0 16 L-25 38 L-15 5 L-45 -12 L-10 -12 Z" fill="#ffd700"/>
+    <circle cx="0" cy="0" r="28" fill="none" stroke="#ffd700" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#ffd700" stroke-width="0.6" opacity="0.6"/>
+    <text x="0" y="5" text-anchor="middle" font-size="18" fill="#ffd700" font-family="serif">&#9733;</text>
+    <text x="0" y="-35" text-anchor="middle" font-size="7" fill="#ffd700" font-family="serif" letter-spacing="4">FATE</text>
+    <text x="0" y="48" text-anchor="middle" font-size="5" fill="#ffd700" font-family="serif" letter-spacing="3">T A R O T</text>
+  </g>
+</svg>
